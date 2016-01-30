@@ -1,0 +1,12 @@
+.board {
+  height: 500px;
+  width: 500px;
+  border: 2px solid;
+}
+
+.row1 > *{
+  height: 100px;
+  width: 100px;
+  border: 2px solid;
+  display: inline-block;
+}
