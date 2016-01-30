@@ -1,21 +1,14 @@
 console.log("START");
 
 // Data Model:
-
-var back = ["", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", ""
+var back = [];
+var tiles = [0, 1, 2, 3,
+            4, 5, 6, 7,
+            8, 9, 0, 1,
+            2, 3, 4, 5,
+            6, 7, 8, 9
             ];
-
-// var front = ["1", "2", "3", "4",
-//              "5", "6", "7", "8",
-//              "9", "10", "1", "2",
-//              "3", "4", "5", "6",
-//              "7", "8", "9", "10"
-//             ];
-
+var flipped = 0;
 var time;
 var player1 = "Player 1";
 var player2 = "Player 2";
@@ -23,56 +16,37 @@ var win = false;
 
 // 1. Start Game:
 
+function shuffleArray(tiles) {
+  var tiles = [0, 1, 2, 3,
+               4, 5, 6, 7,
+               8, 9, 0, 1,
+               2, 3, 4, 5,
+               6, 7, 8, 9
+              ];
+    for (var i = tiles.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = tiles[i];
+        tiles[i] = tiles[j];
+        tiles[j] = temp;
+    }
+    return tiles;
+}
+
 function startGame() {
   win = false;
   player1 = "Player 1";
-  var back = ["", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", ""
-            ];
-
+  var back = [];
+  var flipped = 0;
+  return shuffleArray(tiles);
 }
 
-// function flipTiles(cell1, cell2) {
-//   // for (var i = 0; i < board.length; i += 1) {
-//   //   for (var j = 0; j < flippedBoard.length; j += 1) {
-//   //     // if (board[cell1]) {
-//   //        board[cell1].push(flippedBoard[j]);
-//   //        // if (cell2 === board[i]) {
-//          //    cell2.push(flippedBoard[j]);
-//          // }
-//       // }
-//     }
-//   }
-// }
 
-function flipTiles() {
-    back[0] = 0;
-    back[1] = 1;
-    back[2] = 2;
-    back[3] = 3;
-    back[4] = 4;
-    back[5] = 5;
-    back[6] = 6;
-    back[7] = 7;
-    back[8] = 8;
-    back[9] = 9;
-    back[10] = 0;
-    back[11] = 1;
-    back[12] = 2;
-    back[13] = 3;
-    back[14] = 4;
-    back[15] = 5;
-    back[16] = 6;
-    back[17] = 7;
-    back[18] = 8;
-    back[19] = 9;
+function flipTiles(cell) {
+  for (var i = 0; i < tiles.length; i += 1) {
+    back.push(tiles[cell]);
+  }
 }
 
-// function flipTiles() {
-//   var $cell1 = ('.cell1');
-//   $cell1.on('click', function(event){
 
-//   })
+
+
