@@ -5,8 +5,16 @@
 }
 
 .row1 > *{
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border: 2px solid;
   display: inline-block;
 }
+
+.row2 > *{
+  height: 80px;
+  width: 80px;
+  border: 2px solid;
+  display: inline-block;
+}
+
