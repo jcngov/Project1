@@ -2,18 +2,13 @@
 
 // // Data Model:
 
-var board = ["", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-             "", "", "", "",
-            ]
 var tiles = [0, 1, 2, 3,
             4, 5, 6, 7,
             8, 9, 0, 1,
             2, 3, 4, 5,
             6, 7, 8, 9
             ];
+var pairMatch = [];
 var matches = 0;
 var time;
 var player;
@@ -43,46 +38,42 @@ function shuffle(array) {
 
 
 function startGame() {
-  var board = ["", "", "", "",
-               "", "", "", "",
-               "", "", "", "",
-               "", "", "", "",
-               "", "", "", "",
-              ]
-  var tiles = [0, 1, 2, 3,
-               4, 5, 6, 7,
-               8, 9, 0, 1,
-               2, 3, 4, 5,
-               6, 7, 8, 9
-              ];
   shuffle(tiles);
   console.log(tiles);
   win = false;
   player1 = "Player 1";
   var matches = 0;
-  var tiles;
 }
 
-function pickCells(cellOne, cellTwo) {
-  var tiles = [0, 1, 2, 3,
-            4, 5, 6, 7,
-            8, 9, 0, 1,
-            2, 3, 4, 5,
-            6, 7, 8, 9
-            ];
-  var newArray = shuffleArray(tiles);
-  var pick1 = tiles[cellOne];
-  var pick2 = tiles[cellTwo];
-   if (pick1 === pick2) {
-     matches += 1;
-     console.log('cool');
-     complete();
-   }
-   else if (pick1 !== pick2) {
-    matches = matches;
-    console.log('flip over');
-   }
+
+// for each div, assign a tile
+// when click on tile, value appears.
+function flipTiles() {
+for (var i = 0; i < tiles.length; i += 1) {
+  $('.cell').each(function(i) {
+    $(this).on('click', function(){
+      $(this).html(tiles[i]);
+    });
+      // shuffle(tiles);
+  });
 }
+}
+
+// function flipTiles(div, value) {
+//   if (div.innerHTML == "" && pairMatch.length < 2) {
+//     div.style.background = "white";
+//     div.innerHTML = value;
+//     if(pairMatch.length === 0) {
+//       pairMatch.push(value);
+//     } else if (pairMatch.length === 1) {
+//       pairMatch.push(value);
+//       if(pairMatch[0] === pairMatch[1]) {
+//         matches += 1;
+//         pairMatch = [];
+//       }
+//     }
+//   }
+// }
 
 function complete() {
   if (matches === 10) {
