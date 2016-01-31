@@ -18,3 +18,23 @@
   display: inline-block;
 }
 
+.row3 > *{
+  height: 80px;
+  width: 80px;
+  border: 2px solid;
+  display: inline-block;
+}
+
+.row4 > *{
+  height: 80px;
+  width: 80px;
+  border: 2px solid;
+  display: inline-block;
+}
+
+.row5 > *{
+  height: 80px;
+  width: 80px;
+  border: 2px solid;
+  display: inline-block;
+}
