@@ -1,7 +1,21 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  border: 2px solid;
+  border-radius: 10%;
+  width: 300px;
+  text-align: center;
+  display: inline-block;
+}
+
 .board {
   height: 500px;
   width: 500px;
   border: 2px solid;
+  margin: 0 auto;
+  border-radius: 10%;
 }
 
 .row1 > *{
@@ -9,6 +23,7 @@
   width: 80px;
   border: 2px solid;
   display: inline-block;
+  border-radius: 10%;
 }
 
 .row2 > *{
@@ -16,6 +31,7 @@
   width: 80px;
   border: 2px solid;
   display: inline-block;
+  border-radius: 10%;
 }
 
 .row3 > *{
@@ -23,6 +39,7 @@
   width: 80px;
   border: 2px solid;
   display: inline-block;
+  border-radius: 10%;
 }
 
 .row4 > *{
@@ -30,6 +47,7 @@
   width: 80px;
   border: 2px solid;
   display: inline-block;
+  border-radius: 10%;
 }
 
 .row5 > *{
@@ -37,4 +55,9 @@
   width: 80px;
   border: 2px solid;
   display: inline-block;
+  border-radius: 10%;
+}
+
+section {
+  padding: 20px;
 }

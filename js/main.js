@@ -35,7 +35,7 @@ function startGame() {
   win = false;
   player1 = "Player 1";
   var matches = 0;
-  return shuffleArray(tiles);
+  shuffleArray(tiles);
 }
 
 function pickCells(cellOne, cellTwo) {
