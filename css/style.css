@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  border: 2px solid;
+  border: 2px dashed;
   border-radius: 15%;
   width: 175px;
   text-align: center;
@@ -12,18 +12,27 @@ h1 {
 }
 
 .board {
-  height: 500px;
-  width: 500px;
-  border: 2px dashed;
+  height: 550px;
+  width: 550px;
+  border: 2px dashed black;
   margin: 0 auto;
   border-radius: 10%;
-  background-image: url('https://wallpaperscraft.com/image/surface_texture_background_light_18499_2560x1600.jpg');
+  background-image: url('');
+  padding: 3px;
 }
 
-.row1 > *{
+.cell {
+  border: 2px dashed black;
   height: 80px;
   width: 80px;
-  border: 2px solid;
+  margin: 12px;
+  display: inline-block;
+}
+
+/*.row1 > *{
+  height: 80px;
+  width: 80px;
+  border: 2px dashed black;
   display: inline-block;
   border-radius: 10%;
 }
@@ -31,7 +40,7 @@ h1 {
 .row2 > *{
   height: 80px;
   width: 80px;
-  border: 2px solid;
+  border: 2px dashed black;
   display: inline-block;
   border-radius: 10%;
 }
@@ -39,7 +48,7 @@ h1 {
 .row3 > *{
   height: 80px;
   width: 80px;
-  border: 2px solid;
+  border: 2px dashed black;
   display: inline-block;
   border-radius: 10%;
 }
@@ -47,7 +56,7 @@ h1 {
 .row4 > *{
   height: 80px;
   width: 80px;
-  border: 2px solid;
+  border: 2px dashed black;
   display: inline-block;
   border-radius: 10%;
 }
@@ -55,11 +64,11 @@ h1 {
 .row5 > *{
   height: 80px;
   width: 80px;
-  border: 2px solid;
+  border: 2px dashed black;
   display: inline-block;
   border-radius: 10%;
 }
 
 section {
   padding: 20px;
-}
+}*/

@@ -2,12 +2,55 @@
 
 // // Data Model:
 
-var tiles = [0, 1, 2, 3,
-            4, 5, 6, 7,
-            8, 9, 0, 1,
-            2, 3, 4, 5,
-            6, 7, 8, 9
+//nested
+// var tiles = [ // new Tile(0,"www.friendship.com/friends1.jpg")
+//             0, 1, 2, 3,
+//             4, 5, 6, 7,
+//             8, 9, 0, 1,
+//             2, 3, 4, 5,
+//             6, 7, 8, 9
+//             ];
+var Tile = function(number, color) {
+  this.number = number;
+  this.color = color;
+  this.match = false;
+  // this.urlString = urlString;
+}
+
+var tile1 = new Tile(0, "blue");
+var tile2 = new Tile(0, "blue");
+var tile3 = new Tile(1, "red");
+var tile4 = new Tile(1, "red");
+var tile5 = new Tile(2, "yellow");
+var tile6 = new Tile(2, "yellow");
+var tile7 = new Tile(3, "orange");
+var tile8 = new Tile(3, "orange");
+var tile9 = new Tile(4, "purple");
+var tile10 = new Tile(4, "purple");
+var tile11 = new Tile(5, "brown");
+var tile12 = new Tile(5, "brown");
+var tile13 = new Tile(6, "pink");
+var tile14 = new Tile(6, "pink");
+var tile15 = new Tile(7, "black");
+var tile16 = new Tile(7, "black");
+var tile17 = new Tile(8, "gray");
+var tile18 = new Tile(8, "gray");
+var tile19 = new Tile(9, "green");
+var tile20 = new Tile(9, "green");
+
+var tiles = [
+            tile1, tile2, tile3, tile4,
+            tile5, tile6, tile7, tile8,
+            tile9, tile10, tile11, tile12,
+            tile13, tile14, tile15, tile16,
+            tile17, tile18, tile19, tile20
             ];
+
+var currentTurn = {
+  clickOne: null,
+  clickTwo: null
+}
+
 var pairMatch = [];
 var matches = 0;
 var time;
@@ -45,120 +88,68 @@ function startGame() {
 }
 
 
+var selected = null;
+
 // for each div, assign a tile
 // when click on tile, value appears.
-function flipTiles() {
-  for (var i = 0; i < tiles.length; i += 1) {
-    $('.cell').each(function(i) {
-      $(this).on('click', function(){
-        $(this).html(tiles[i]);
-      });
-    });
-  }
-}
+// function flipTiles() {
+
+//   // for (var i = 0; i < tiles.length; i += 1) {
+//     $('.cell').each(function(i) {
+//       $(this).on('click', function(){
+//         $(this).html(tiles[i]);
+//       });
+//     });
+  // }
+
+  // if (board[currI) === selected
+  // if ($('#cell1').text() === $('#cell2').text() ||
+  //                          $('#cell3').html ||
+  //                          $('#cell4').html ||
+  //                          $('#cell5').html ||
+  //                          $('#cell6').html ||
+  //                          $('#cell7').html ||
+  //                          $('#cell8').html ||
+  //                          $('#cell9').html ||
+  //                          $('#cell10').html ||
+  //                          $('#cell11').html ||
+  //                          $('#cell12').html ||
+  //                          $('#cell14').html ||
+  //                          $('#cell15').html ||
+  //                          $('#cell16').html ||
+  //                          $('#cell17').html ||
+  //                          $('#cell18').html ||
+  //                          $('#cell19').html ||
+  //                          $('#cell20').html) {
+  //   console.log('match');
+  // }
 
 // after I click a div to reveal the value,
 // I want to click another div.  If the 2 values match, match+1
-function matchingPairs(tile1, tile2) {
-  if (pairMatch.length === 0) {
-    pairMatch.push($('.cell').html(tiles[tile1]));
-    if (pairMatch.length === 1) {
-      pairMatch.push($('.cell').html(tiles[tile2]));
-    }
-  }
-  console.log(pairMatch);
-  if (pairMatch[0] === pairMatch[1]) {
-    matches += 1;
-    pairMatch = [];
+// function matchingPairs() {
+//   if (pairMatch.length < 2) {
+//     pairMatch.push($('.cell').html);
+//   }
+//   if (pairMatch[0] === pairMatch[1]) {
+//     matches += 1;
+//     console.log(pairMatch);
+//     pairMatch = [];
+//   }
+// }
+
+// function complete() {
+//   if (matches === 10) {
+//     console.log('completed');
+//     win = true;
+//   }
+// }
+
+function render() {
+  for (var i = 1; i <= tiles.length; i += 1) {
+    // if (tiles[i-1].match === true) {
+      $('#cell' + i).text(tiles[i-1].number);
+    // }
   }
 }
 
-function complete() {
-  if (matches === 10) {
-    console.log('completed');
-  }
-}
-
-// $('#cell1').on("click", function(event) {
-//   $('#cell1').css({"background-color": "red"});
-// });
-
-// $('#cell2').on("click", function(event) {
-//   $('#cell2').css({"background-color": "red"});
-// });
-
-// $('#cell3').on("click", function(event) {
-//   $('#cell3').css({"background-color": "blue"});
-// });
-
-// $('#cell4').on("click", function(event) {
-//   $('#cell4').css({"background-color": "blue"});
-// });
-
-//
-
-// $('#cell5').on("click", function(event) {
-//   $('#cell5').css({"background-color": "black"});
-// });
-
-// $('#cell6').on("click", function(event) {
-//   $('#cell6').css({"background-color": "black"});
-// });
-
-// $('#cell7').on("click", function(event) {
-//   $('#cell7').css({"background-color": "yellow"});
-// });
-
-// $('#cell8').on("click", function(event) {
-//   $('#cell8').css({"background-color": "yellow"});
-// });
-
-
-// $('#cell9').on("click", function(event) {
-//   $('#cell9').css({"background-color": "pink"});
-// });
-
-// $('#cell10').on("click", function(event) {
-//   $('#cell10').css({"background-color": "pink"});
-// });
-
-// $('#cell11').on("click", function(event) {
-//   $('#cell11').css({"background-color": "orange"});
-// });
-
-// $('#cell12').on("click", function(event) {
-//   $('#cell12').css({"background-color": "orange"});
-// });
-
-// $('#cell13').on("click", function(event) {
-//   $('#cell13').css({"background-color": "purple"});
-// });
-
-// $('#cell14').on("click", function(event) {
-//   $('#cell14').css({"background-color": "purple"});
-// });
-
-// $('#cell15').on("click", function(event) {
-//   $('#cell15').css({"background-color": "brown"});
-// });
-
-// $('#cell16').on("click", function(event) {
-//   $('#cell16').css({"background-color": "brown"});
-// });
-
-// $('#cell17').on("click", function(event) {
-//   $('#cell17').css({"background-color": "gray"});
-// });
-
-// $('#cell18').on("click", function(event) {
-//   $('#cell18').css({"background-color": "gray"});
-// });
-
-// $('#cell19').on("click", function(event) {
-//   $('#cell19').css({"background-color": "white"});
-// });
-
-// $('#cell20').on("click", function(event) {
-//   $('#cell20').css({"background-color": "white"});
-// });
 
