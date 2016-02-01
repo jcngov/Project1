@@ -13,7 +13,6 @@ var matches = 0;
 var time;
 var player;
 var win = false;
-var newArray;
 
 // 1. Start Game:
 
@@ -49,58 +48,36 @@ function startGame() {
 // for each div, assign a tile
 // when click on tile, value appears.
 function flipTiles() {
-for (var i = 0; i < tiles.length; i += 1) {
-  $('.cell').each(function(i) {
-    $(this).on('click', function(){
-      $(this).html(tiles[i]);
+  for (var i = 0; i < tiles.length; i += 1) {
+    $('.cell').each(function(i) {
+      $(this).on('click', function(){
+        $(this).html(tiles[i]);
+      });
     });
-      // shuffle(tiles);
-  });
-}
+  }
 }
 
-// function flipTiles(div, value) {
-//   if (div.innerHTML == "" && pairMatch.length < 2) {
-//     div.style.background = "white";
-//     div.innerHTML = value;
-//     if(pairMatch.length === 0) {
-//       pairMatch.push(value);
-//     } else if (pairMatch.length === 1) {
-//       pairMatch.push(value);
-//       if(pairMatch[0] === pairMatch[1]) {
-//         matches += 1;
-//         pairMatch = [];
-//       }
-//     }
-//   }
-// }
+// after I click a div to reveal the value,
+// I want to click another div.  If the 2 values match, match+1
+function matchingPairs(tile1, tile2) {
+  if (pairMatch.length === 0) {
+    pairMatch.push($('.cell').html(tiles[tile1]));
+    if (pairMatch.length === 1) {
+      pairMatch.push($('.cell').html(tiles[tile2]));
+    }
+  }
+  console.log(pairMatch);
+  if (pairMatch[0] === pairMatch[1]) {
+    matches += 1;
+    pairMatch = [];
+  }
+}
 
 function complete() {
   if (matches === 10) {
     console.log('completed');
   }
 }
-
-
-
-// var $array = [];
-// $('.cell').each(function() {
-//   var id = $(this).attr('id');
-//   $array.push(id);
-// });
-
-// function shuffleArray($array) {
-//     for (var i = $array.length - 1; i > 0; i--) {
-//         var j = Math.floor(Math.random() * (i + 1));
-//         var temp = $array[i];
-//         $array[i] = $array[j];
-//         $array[j] = temp;
-//     }
-//     return $array;
-//     // $array.each(function()) {
-
-//     // }
-// }
 
 // $('#cell1').on("click", function(event) {
 //   $('#cell1').css({"background-color": "red"});
@@ -118,10 +95,7 @@ function complete() {
 //   $('#cell4').css({"background-color": "blue"});
 // });
 
-// }
-
-
-
+//
 
 // $('#cell5').on("click", function(event) {
 //   $('#cell5').css({"background-color": "black"});
@@ -187,5 +161,4 @@ function complete() {
 // $('#cell20').on("click", function(event) {
 //   $('#cell20').css({"background-color": "white"});
 // });
-
 

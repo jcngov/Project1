@@ -1,11 +1,12 @@
 body {
   text-align: center;
+
 }
 
 h1 {
   border: 2px solid;
-  border-radius: 10%;
-  width: 300px;
+  border-radius: 15%;
+  width: 175px;
   text-align: center;
   display: inline-block;
 }
@@ -13,9 +14,10 @@ h1 {
 .board {
   height: 500px;
   width: 500px;
-  border: 2px solid;
+  border: 2px dashed;
   margin: 0 auto;
   border-radius: 10%;
+  background-image: url('https://wallpaperscraft.com/image/surface_texture_background_light_18499_2560x1600.jpg');
 }
 
 .row1 > *{
