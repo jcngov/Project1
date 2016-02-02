@@ -13,18 +13,14 @@
 var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".png";
-  // this.clickOne = false;
-  // this.clickTwo = false;
 }
 var pairs = [];
-var pairsId = [];
 var matches = 0;
-var $images = $('<img src="">')
 
 var tile1 = new Tile(0, 'cloud');
 var tile2 = new Tile(0, 'cloud');
-var tile3 = new Tile(1);
-var tile4 = new Tile(1);
+var tile3 = new Tile(1, 'facetime');
+var tile4 = new Tile(1, 'facetime');
 var tile5 = new Tile(2);
 var tile6 = new Tile(2);
 var tile7 = new Tile(3);
@@ -49,12 +45,6 @@ var tiles = [
             tile13, tile14, tile15, tile16,
             tile17, tile18, tile19, tile20
             ];
-
-// var pairMatch = [];
-// var matches = 0;
-// var time;
-// var player;
-// var win = false;
 
 // 1. Start Game:
 
@@ -90,14 +80,16 @@ function startGame() {
 // when click on a tile, a value shows up
   $('.cell').each(function(i) {
     $(this).on('click', function(){
-      $(this).text(tiles[i].number);
+      // $(this).text(tiles[i].number);
+        $(this).html('<img src="' + tiles[i].image + '" />');
       if (secondClick) {
         secondElem = this;
-        if (firstValue === tiles[i].number) {
+        if (firstValue === tiles[i].image) {
           console.log('matcheddddd');
+          matches += 1;
           // it's a match do something with the cards
-          $(firstElem).css('visibility', 'hidden');
-          $(secondElem).css('visibility', 'hidden');
+          // $(firstElem).css('visibility', 'hidden');
+          // $(secondElem).css('visibility', 'hidden');
         } else {
           console.log('not matched');
           // set timer to remove text from cards
@@ -109,12 +101,16 @@ function startGame() {
         secondClick = false;
       } else {
         secondClick = true;
-        firstValue = tiles[i].number;
+        firstValue = tiles[i].image;
         firstElem = this;
         console.log('first click');
       }
 
-        // $(this).html('<img src="' + tiles[i].image + '" />');
+      if (matches === 10) {
+        console.log('YOU FINISHED');
+
+      }
+
         // matched(tiles[i].number);
     });
   });
@@ -164,30 +160,4 @@ function render() {
 //   }
 // }
 
-// var selected = true;
-
-  // if (board[currI) === selected)
-function match() {
-  if (tile1.number === tile2.number ||
-      tile1.number === tile3.number ||
-      tile1.number === tile4.number ||
-      tile1.number === tile5.number ||
-      tile1.number === tile6.number ||
-      tile1.number === tile7.number ||
-      tile1.number === tile8.number ||
-      tile1.number === tile9.number ||
-      tile1.number === tile10.number ||
-      tile1.number === tile11.number ||
-      tile1.number === tile12.number ||
-      tile1.number === tile13.number ||
-      tile1.number === tile14.number ||
-      tile1.number === tile15.number ||
-      tile1.number === tile16.number ||
-      tile1.number === tile17.number ||
-      tile1.number === tile18.number ||
-      tile1.number === tile19.number ||
-      tile1.number === tile20.number) {
-    console.log('match');
-  }
-}
 
