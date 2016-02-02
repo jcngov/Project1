@@ -10,17 +10,19 @@
 //             2, 3, 4, 5,
 //             6, 7, 8, 9
 //             ];
-var pairs = [];
-var matches = 0;
-var Tile = function(number, url) {
+var Tile = function(number, image) {
   this.number = number;
-  this.url = url;
-  this.clickOne = false;
-  this.clickTwo = false;
+  this.image = "assets/" + image + ".png";
+  // this.clickOne = false;
+  // this.clickTwo = false;
 }
+var pairs = [];
+var pairsId = [];
+var matches = 0;
+var $images = $('<img src="">')
 
-var tile1 = new Tile(0);
-var tile2 = new Tile(0);
+var tile1 = new Tile(0, 'cloud');
+var tile2 = new Tile(0, 'cloud');
 var tile3 = new Tile(1);
 var tile4 = new Tile(1);
 var tile5 = new Tile(2);
@@ -71,7 +73,8 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
+  console.log(array);
+  // renderBoard(array);
   return array;
 }
 
@@ -88,13 +91,40 @@ function startGame() {
   $('.cell').each(function(i) {
     $(this).on('click', function(){
       $(this).text(tiles[i].number);
-        flip(tiles[i].number);
-          // flipBack();
+      if (secondClick) {
+        secondElem = this;
+        if (firstValue === tiles[i].number) {
+          console.log('matcheddddd');
+          // it's a match do something with the cards
+          $(firstElem).css('visibility', 'hidden');
+          $(secondElem).css('visibility', 'hidden');
+        } else {
+          console.log('not matched');
+          // set timer to remove text from cards
+          setTimeout(function() {
+            $(secondElem).text('');
+            $(firstElem).text('');
+          }, 1000);
+        }
+        secondClick = false;
+      } else {
+        secondClick = true;
+        firstValue = tiles[i].number;
+        firstElem = this;
+        console.log('first click');
+      }
+
+        // $(this).html('<img src="' + tiles[i].image + '" />');
+        // matched(tiles[i].number);
     });
   });
 
+var secondClick = false;
+var secondElem;
+var firstValue;
+var firstElem;
 
-function flip(cellValue){
+function matched(cellValue){
   if (pairs.length === 0) {
     pairs.push(cellValue);
   } else if (pairs.length === 1) {
@@ -104,27 +134,19 @@ function flip(cellValue){
         console.log(matches);
         pairs = [];
       }
-      else {
+    else {
         console.log('not match');
-        pairs = [];
-          function flipBack() {
-
-          }
+      //   function flipBack(tile) {
+      //     tile.hide();
+      //   }
+      // setTimeout(flipBack, 1000);
+      pairs = [];
       }
     }
   if (matches === 10) {
     console.log("YOU FINISHED");
   }
 }
-
-
-
-function click1(firstpick){
-  for (var i = 1; i <= tiles.length; i += 1) {
-
-  }
-}
-
 
 
 function render() {
@@ -134,6 +156,13 @@ function render() {
     // }
   }
 }
+
+// function renderBoard(array) {
+//   console.log(array);
+//   for (var i = 0; i <= array.length; i++) {
+//     $('.board').append("<div class='cell' id='cell" + array[i].number + "'>" + "</div>");
+//   }
+// }
 
 // var selected = true;
 

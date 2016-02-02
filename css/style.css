@@ -1,75 +1,53 @@
 body {
   text-align: center;
+/*  background-image: url('http://pngimg.com/upload/iphone_PNG5725.png');
+  background-size: 95%;
+  display: absolute;
+  background-repeat: no-repeat;*/
 
 }
 
-h1 {
-  border: 2px dashed;
+/*section {
+  margin: 0 auto;
+  height: 750px;
+  width: 650px;
+  border: 2px solid;
+  border-radius: 10%;
+  background-color: #006699;
+}
+*/
+/*h1 {
+  border: 2px solid;
   border-radius: 15%;
   width: 175px;
   text-align: center;
   display: inline-block;
-}
-
+  padding: 10px;
+  background-color: white;
+}*/
+/*
 .board {
-  height: 550px;
+  height: 600px;
   width: 550px;
-  border: 2px dashed black;
+  border: 2px solid black;
   margin: 0 auto;
   border-radius: 10%;
-  background-image: url('');
+  background-color: white;
   padding: 3px;
 }
-
+*/
 .cell {
-  border: 2px dashed black;
-  height: 80px;
-  width: 80px;
+  border: 2px solid black;
+  height: 40px;
+  width: 40px;
   margin: 12px;
   display: inline-block;
-  background-color: red;
+  background-color: #006699;
+  border-radius: 20%;
 }
 
-/*.row1 > *{
-  height: 80px;
-  width: 80px;
-  border: 2px dashed black;
-  display: inline-block;
-  border-radius: 10%;
-}
-
-.row2 > *{
-  height: 80px;
-  width: 80px;
-  border: 2px dashed black;
-  display: inline-block;
-  border-radius: 10%;
-}
-
-.row3 > *{
-  height: 80px;
-  width: 80px;
-  border: 2px dashed black;
-  display: inline-block;
-  border-radius: 10%;
-}
-
-.row4 > *{
-  height: 80px;
-  width: 80px;
-  border: 2px dashed black;
-  display: inline-block;
-  border-radius: 10%;
-}
-
-.row5 > *{
-  height: 80px;
-  width: 80px;
-  border: 2px dashed black;
-  display: inline-block;
-  border-radius: 10%;
-}
 
 section {
   padding: 20px;
-}*/
+}
+
