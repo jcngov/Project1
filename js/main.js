@@ -12,31 +12,31 @@
 //             ];
 var Tile = function(number, image) {
   this.number = number;
-  this.image = "assets/" + image + ".png";
+  this.image = "assets/" + image + ".jpg";
 }
 var pairs = [];
 var matches = 0;
 
-var tile1 = new Tile(0, 'cloud');
-var tile2 = new Tile(0, 'cloud');
-var tile3 = new Tile(1, 'facetime');
-var tile4 = new Tile(1, 'facetime');
-var tile5 = new Tile(2);
-var tile6 = new Tile(2);
-var tile7 = new Tile(3);
-var tile8 = new Tile(3);
-var tile9 = new Tile(4);
-var tile10 = new Tile(4);
-var tile11 = new Tile(5);
-var tile12 = new Tile(5);
-var tile13 = new Tile(6);
-var tile14 = new Tile(6);
-var tile15 = new Tile(7);
-var tile16 = new Tile(7);
-var tile17 = new Tile(8);
-var tile18 = new Tile(8);
-var tile19 = new Tile(9);
-var tile20 = new Tile(9);
+var tile1 = new Tile(0, 'ironman');
+var tile2 = new Tile(0, 'ironman');
+var tile3 = new Tile(1, 'superman');
+var tile4 = new Tile(1, 'superman');
+var tile5 = new Tile(2, 'hulk');
+var tile6 = new Tile(2, 'hulk');
+var tile7 = new Tile(3, 'daredevil');
+var tile8 = new Tile(3, 'daredevil');
+var tile9 = new Tile(4, 'stormtrooper');
+var tile10 = new Tile(4, 'stormtrooper');
+var tile11 = new Tile(5, 'deadpool');
+var tile12 = new Tile(5, 'deadpool');
+var tile13 = new Tile(6, 'batman');
+var tile14 = new Tile(6, 'batman');
+var tile15 = new Tile(7, 'spiderman');
+var tile16 = new Tile(7, 'spiderman');
+var tile17 = new Tile(8, 'R2D2');
+var tile18 = new Tile(8, 'R2D2');
+var tile19 = new Tile(9, 'bobafet');
+var tile20 = new Tile(9, 'bobafet');
 
 var tiles = [
             tile1, tile2, tile3, tile4,
@@ -63,7 +63,6 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-  console.log(array);
   // renderBoard(array);
   return array;
 }
