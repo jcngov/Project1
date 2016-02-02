@@ -27,6 +27,7 @@ h1 {
   width: 80px;
   margin: 12px;
   display: inline-block;
+  background-color: red;
 }
 
 /*.row1 > *{

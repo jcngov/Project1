@@ -10,33 +10,35 @@
 //             2, 3, 4, 5,
 //             6, 7, 8, 9
 //             ];
-var Tile = function(number, color) {
+var pairs = [];
+var matches = 0;
+var Tile = function(number, url) {
   this.number = number;
-  this.color = color;
-  this.match = false;
-  // this.urlString = urlString;
+  this.url = url;
+  this.clickOne = false;
+  this.clickTwo = false;
 }
 
-var tile1 = new Tile(0, "blue");
-var tile2 = new Tile(0, "blue");
-var tile3 = new Tile(1, "red");
-var tile4 = new Tile(1, "red");
-var tile5 = new Tile(2, "yellow");
-var tile6 = new Tile(2, "yellow");
-var tile7 = new Tile(3, "orange");
-var tile8 = new Tile(3, "orange");
-var tile9 = new Tile(4, "purple");
-var tile10 = new Tile(4, "purple");
-var tile11 = new Tile(5, "brown");
-var tile12 = new Tile(5, "brown");
-var tile13 = new Tile(6, "pink");
-var tile14 = new Tile(6, "pink");
-var tile15 = new Tile(7, "black");
-var tile16 = new Tile(7, "black");
-var tile17 = new Tile(8, "gray");
-var tile18 = new Tile(8, "gray");
-var tile19 = new Tile(9, "green");
-var tile20 = new Tile(9, "green");
+var tile1 = new Tile(0);
+var tile2 = new Tile(0);
+var tile3 = new Tile(1);
+var tile4 = new Tile(1);
+var tile5 = new Tile(2);
+var tile6 = new Tile(2);
+var tile7 = new Tile(3);
+var tile8 = new Tile(3);
+var tile9 = new Tile(4);
+var tile10 = new Tile(4);
+var tile11 = new Tile(5);
+var tile12 = new Tile(5);
+var tile13 = new Tile(6);
+var tile14 = new Tile(6);
+var tile15 = new Tile(7);
+var tile16 = new Tile(7);
+var tile17 = new Tile(8);
+var tile18 = new Tile(8);
+var tile19 = new Tile(9);
+var tile20 = new Tile(9);
 
 var tiles = [
             tile1, tile2, tile3, tile4,
@@ -46,16 +48,11 @@ var tiles = [
             tile17, tile18, tile19, tile20
             ];
 
-var currentTurn = {
-  clickOne: null,
-  clickTwo: null
-}
-
-var pairMatch = [];
-var matches = 0;
-var time;
-var player;
-var win = false;
+// var pairMatch = [];
+// var matches = 0;
+// var time;
+// var player;
+// var win = false;
 
 // 1. Start Game:
 
@@ -78,71 +75,57 @@ function shuffle(array) {
   return array;
 }
 
-
 function startGame() {
   shuffle(tiles);
   console.log(tiles);
-  win = false;
-  player1 = "Player 1";
+  // win = false;
+  // player1 = "Player 1";
   var matches = 0;
 }
 
 
-var selected = null;
+// when click on a tile, a value shows up
+  $('.cell').each(function(i) {
+    $(this).on('click', function(){
+      $(this).text(tiles[i].number);
+        flip(tiles[i].number);
+          // flipBack();
+    });
+  });
 
-// for each div, assign a tile
-// when click on tile, value appears.
-// function flipTiles() {
 
-//   // for (var i = 0; i < tiles.length; i += 1) {
-//     $('.cell').each(function(i) {
-//       $(this).on('click', function(){
-//         $(this).html(tiles[i]);
-//       });
-//     });
-  // }
+function flip(cellValue){
+  if (pairs.length === 0) {
+    pairs.push(cellValue);
+  } else if (pairs.length === 1) {
+    pairs.push(cellValue);
+      if (pairs[0] === pairs[1]) {
+        matches += 1;
+        console.log(matches);
+        pairs = [];
+      }
+      else {
+        console.log('not match');
+        pairs = [];
+          function flipBack() {
 
-  // if (board[currI) === selected
-  // if ($('#cell1').text() === $('#cell2').text() ||
-  //                          $('#cell3').html ||
-  //                          $('#cell4').html ||
-  //                          $('#cell5').html ||
-  //                          $('#cell6').html ||
-  //                          $('#cell7').html ||
-  //                          $('#cell8').html ||
-  //                          $('#cell9').html ||
-  //                          $('#cell10').html ||
-  //                          $('#cell11').html ||
-  //                          $('#cell12').html ||
-  //                          $('#cell14').html ||
-  //                          $('#cell15').html ||
-  //                          $('#cell16').html ||
-  //                          $('#cell17').html ||
-  //                          $('#cell18').html ||
-  //                          $('#cell19').html ||
-  //                          $('#cell20').html) {
-  //   console.log('match');
-  // }
+          }
+      }
+    }
+  if (matches === 10) {
+    console.log("YOU FINISHED");
+  }
+}
 
-// after I click a div to reveal the value,
-// I want to click another div.  If the 2 values match, match+1
-// function matchingPairs() {
-//   if (pairMatch.length < 2) {
-//     pairMatch.push($('.cell').html);
-//   }
-//   if (pairMatch[0] === pairMatch[1]) {
-//     matches += 1;
-//     console.log(pairMatch);
-//     pairMatch = [];
-//   }
-// }
 
-// function complete() {
-//   if (matches === 10) {
-//     console.log('completed');
-//     win = true;
-//   }
-// }
+
+function click1(firstpick){
+  for (var i = 1; i <= tiles.length; i += 1) {
+
+  }
+}
+
+
 
 function render() {
   for (var i = 1; i <= tiles.length; i += 1) {
@@ -152,4 +135,30 @@ function render() {
   }
 }
 
+// var selected = true;
+
+  // if (board[currI) === selected)
+function match() {
+  if (tile1.number === tile2.number ||
+      tile1.number === tile3.number ||
+      tile1.number === tile4.number ||
+      tile1.number === tile5.number ||
+      tile1.number === tile6.number ||
+      tile1.number === tile7.number ||
+      tile1.number === tile8.number ||
+      tile1.number === tile9.number ||
+      tile1.number === tile10.number ||
+      tile1.number === tile11.number ||
+      tile1.number === tile12.number ||
+      tile1.number === tile13.number ||
+      tile1.number === tile14.number ||
+      tile1.number === tile15.number ||
+      tile1.number === tile16.number ||
+      tile1.number === tile17.number ||
+      tile1.number === tile18.number ||
+      tile1.number === tile19.number ||
+      tile1.number === tile20.number) {
+    console.log('match');
+  }
+}
 
