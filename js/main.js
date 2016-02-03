@@ -6,7 +6,8 @@ var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
 }
-var matches = 0;
+
+var matches;
 
 var tile1 = new Tile(0, 'ironman');
 var tile2 = new Tile(0, 'ironman');
@@ -58,23 +59,14 @@ function shuffle(array) {
   return array;
 }
 
-function startGame() {
+function clearBoard() {
   shuffle(tiles);
   console.log(tiles);
-  $('.cell').text('');
-  $('#result').text("");
-  var matches = 0;
+  matches = 0;
   var time = 0;
-  // var timer = setInterval(function() {
-  //   if (matches < 10) {
-  //         time += 1;
-  //         $('#clock').html(time);
-  //    } else if (matches >= 10) {
-  //     clearInterval(timer);
-  //     $('#result').text("You finished in" + " " + time + " " + "seconds!");
-  //     console.log("You finished in" + " " + time + " " + "seconds");
-  //   }
-  //   }, 1000);
+  $('.cell').text("");
+  $('#clock').text("");
+  $('#result').text("");
 }
 
 
@@ -120,44 +112,67 @@ var secondElem;
   });
 
 
-var time = 0;
-var timer = setInterval(function() {
-  if (matches < 10) {
-        time += 1;
-        $('#clock').html(time);
-   } else if (matches >= 10) {
-    clearInterval(timer);
-    $('#result').text("You finished in" + " " + time + " " + "seconds!");
-  }
-    }, 1000);
-
-
-// function playGame() {
-//   $('start').on("click", function(){
-//     console.log('started!');
-//     startGame();
-
-//   })
-// }
-function restart(){
-  $('button').on("click", function(){
-    console.log('restarted!');
-    startGame();
+function player1(){
+  $('.player1').on("click", function(){
+    console.log('player1 turn');
+    clearBoard();
+    var time = 0;
+  var timer = setInterval(function() {
+    if (matches < 10) {
+          time += 1;
+          $('#clock1').text(time);
+     } else if (matches >= 10) {
+      clearInterval(timer);
+      $('#result1').text("You finished in" + " " + time + " " + "seconds!");
+    }
+      }, 1000);
   });
 }
 
-// restart();
+player1();
 
-function render() {
-  for (var i = 1; i <= tiles.length; i += 1) {
-    // if (tiles[i-1].match === true) {
-      $('#cell' + i).text(tiles[i-1].number);
-    // }
-  }
+function player2(){
+  $('.player2').on("click", function(){
+    console.log('player2 turn');
+    clearBoard();
+    var time = 0;
+      var timer = setInterval(function() {
+    if (matches < 10) {
+          time += 1;
+          $('#clock2').text(time);
+     } else if (matches >= 10) {
+      clearInterval(timer);
+      $('#result2').text("You finished in" + " " + time + " " + "seconds!");
+    }
+      }, 1000);
+  })
 }
 
-// playGame();
-restart();
+player2();
+// function restart(){
+//   $('.reset').on("click", function(){
+//     console.log('restarted!');
+//     startGame();
+//   });
+// }
+
+// function pause(){
+//   $('.pause').on("click", function(){
+//     console.log('paused');
+//     clearInterval(timer);
+//   });
+// }
+
+
+// function render() {
+//   for (var i = 1; i <= tiles.length; i += 1) {
+//     // if (tiles[i-1].match === true) {
+//       $('#cell' + i).text(tiles[i-1].number);
+//     // }
+//   }
+// }
+
+
 // function matched(cellValue){
 //   if (pairs.length === 0) {
 //     pairs.push(cellValue);

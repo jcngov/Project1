@@ -13,10 +13,15 @@ body {
   background: black;
 }
 */
-/*h1 {
-  font-family: 'Bangers', cursive;
+h1 {
+  font-family: 'Titillium Web', sans-serif;
   color: white;
-}*/
+  font-size: 80px;
+  margin: 0 auto;
+  /*border: 2px solid white;*/
+  background-color: black;
+  opacity: 0.8;
+}
 
 .cell {
   border: 2px solid black;
@@ -52,32 +57,61 @@ body {
 .section2 {
   border: 2px solid white;
   width: 300px;
-  height: 550px;
+  height: 150px;
   margin: 0 auto;
   position: relative;
   top: 25px;
   background-color: black;
   opacity: 0.8;
+  display: flex;
+  /*justify-content: center;*/
 }
-#clock {
-  width: 50px;
-  height: 50px;
+#clock1 {
+  width: 100px;
+  height: 80px;
   border: 5px solid;
   background-color: white;
-  /*position: relative;*/
-  opacity: 0.8;
-  margin: 0 auto;
+  opacity: 0.9;
 }
 
-#result {
-  width: 125px;
-  height: 50px;
-  border: 2px solid;
+#result1 {
+  width: 300px;
+  height: 80px;
+  border: 5px solid;
   background-color: white;
-  /*position: relative;*/
-  margin: 0 auto;
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
+.section3{
+  border: 2px solid white;
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+  background-color: black;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  left: 232px;
+  bottom: 400px;
+}
+
+#clock2 {
+  width: 100px;
+  height: 80px;
+  border: 5px solid;
+  background-color: white;
+  opacity: 0.9;
+}
+
+#result2 {
+  width: 300px;
+  height: 80px;
+  border: 5px solid;
+  background-color: white;
+  opacity: 0.9;
+}
+
 
 footer {
   text-align: center;
