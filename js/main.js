@@ -61,18 +61,20 @@ function shuffle(array) {
 function startGame() {
   shuffle(tiles);
   console.log(tiles);
+  $('.cell').text('');
+  $('#result').text("");
   var matches = 0;
   var time = 0;
-  $('.cell').text('');
-  var timer = setInterval(function() {
-  if (matches < 10) {
-        time += 1;
-        $('#clock').html(time);
-   } else if (matches >= 10) {
-    clearInterval(timer);
-    console.log("You finished in" + " " + time + " " + "seconds");
-  }
-    }, 1000);
+  // var timer = setInterval(function() {
+  //   if (matches < 10) {
+  //         time += 1;
+  //         $('#clock').html(time);
+  //    } else if (matches >= 10) {
+  //     clearInterval(timer);
+  //     $('#result').text("You finished in" + " " + time + " " + "seconds!");
+  //     console.log("You finished in" + " " + time + " " + "seconds");
+  //   }
+  //   }, 1000);
 }
 
 
@@ -130,13 +132,13 @@ var timer = setInterval(function() {
     }, 1000);
 
 
-function playGame() {
-  $('start').on("click", function(){
-    console.log('started!');
-    startGame();
+// function playGame() {
+//   $('start').on("click", function(){
+//     console.log('started!');
+//     startGame();
 
-  })
-}
+//   })
+// }
 function restart(){
   $('button').on("click", function(){
     console.log('restarted!');
@@ -154,7 +156,7 @@ function render() {
   }
 }
 
-playGame();
+// playGame();
 restart();
 // function matched(cellValue){
 //   if (pairs.length === 0) {
