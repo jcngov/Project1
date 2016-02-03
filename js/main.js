@@ -2,6 +2,7 @@
 
 // // Data Model:
 var matches;
+var winner;
 
 var Tile = function(number, image) {
   this.number = number;
@@ -111,6 +112,7 @@ var secondElem;
     });
   });
 
+var whoWon = [];
 
 function player1(){
   $('.player1').on("click", function(){
@@ -123,13 +125,13 @@ function player1(){
               $('#clock1').text(time);
         } else if (matches >= 10) {
           clearInterval(timer);
-          $('#result1').text("You finished in" + " " + time + " " + "seconds!");
+          whoWon.push(time);
+          $('#result1').text("Player 1 finished in" + " " + time + " " + "seconds!");
         }
       }, 1000);
   $('.pause').on("click", function(){
     clearInterval(timer);
   })
-
   });
 }
 
@@ -146,17 +148,30 @@ function player2(){
           $('#clock2').text(time);
         } else if (matches >= 10) {
           clearInterval(timer);
-          $('#result2').text("You finished in" + " " + time + " " + "seconds!");
+          whoWon.push(time);
+            if(whoWon[0] < whoWon[1]) {
+              $('.winner').text('Player 1 Wins!');
+            } else if (whoWon[0] > whoWon[1]) {
+              $('.winner').text('Player 2 Wins!');
+            }
+          $('#result2').text("Player 2 finished in" + " " + time + " " + "seconds!");
         }
       }, 1000);
   $('.pause').on("click", function(){
     clearInterval(timer);
   })
-
   });
 }
 
 player2();
+
+function getWinner(){
+  if($('#clock1').text(time) < $('#clock2').text(time)) {
+    console.log('winner is p1');
+  } else if ($('#clock1').text(time) > $('#clock2').text(time)) {
+    console.log('winner is p2');
+  }
+}
 
 function pause(){
   $('.pause').on("click", function(){

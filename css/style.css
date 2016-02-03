@@ -92,9 +92,6 @@ h1 {
   opacity: 0.8;
   display: flex;
   top: 50px;
-/*  justify-content: center;
-  left: 232px;
-  bottom: 400px;*/
 }
 
 #clock2 {
@@ -116,9 +113,11 @@ h1 {
 .winner {
   width: 300px;
   height: 300px;
-  border: 2px solid white;
+  border: 2px solid black;
   position: relative;
   top: 88px;
+  background-color: white;
+  opacity: 0.8;
 }
 .rightside {
   padding-right: 20px;
