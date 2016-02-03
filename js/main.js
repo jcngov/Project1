@@ -1,13 +1,12 @@
 // console.log("START");
 
 // // Data Model:
+var matches;
 
 var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
 }
-
-var matches;
 
 var tile1 = new Tile(0, 'ironman');
 var tile2 = new Tile(0, 'ironman');
@@ -38,7 +37,7 @@ var tiles = [
             tile17, tile18, tile19, tile20
             ];
 
-// 1. Start Game:
+// Shuffle Tiles:
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -59,6 +58,8 @@ function shuffle(array) {
   return array;
 }
 
+// Clear board:
+
 function clearBoard() {
   shuffle(tiles);
   console.log(tiles);
@@ -78,35 +79,34 @@ var secondElem;
   $('.cell').each(function(i) {
     $(this).on('click', function(){
       // $(this).text(tiles[i].number);
-        $(this).html('<img src="' + tiles[i].image + '" />');
-      if (secondClick) {
-        secondElem = this;
-        if (firstValue === tiles[i].image) {
-          console.log('matcheddddd');
-          matches += 1;
-          console.log(matches);
-          // it's a match do something with the cards
-          // $(firstElem).css('visibility', 'hidden');
-          // $(secondElem).css('visibility', 'hidden');
+      $(this).html('<img src="' + tiles[i].image + '" />');
+        if (secondClick === true) {
+          secondElem = this;
+          if (firstValue === tiles[i].image) {
+            matches += 1;
+            console.log(matches);
+            // it's a match do something with the cards
+            // $(firstElem).css('visibility', 'hidden');
+            // $(secondElem).css('visibility', 'hidden');
+          } else {
+            console.log('not matched');
+            console.log(matches);
+            // set timer to remove text from cards
+            setTimeout(function() {
+              $(firstElem).text('');
+              $(secondElem).text('');
+            }, 700);
+          }
+          secondClick = false;
         } else {
-          console.log('not matched');
-          console.log(matches);
-          // set timer to remove text from cards
-          setTimeout(function() {
-            $(firstElem).text('');
-            $(secondElem).text('');
-          }, 700);
+          secondClick = true;
+          firstValue = tiles[i].image;
+          firstElem = this;
+          console.log('first click');
         }
-        secondClick = false;
-      } else {
-        secondClick = true;
-        firstValue = tiles[i].image;
-        firstElem = this;
-        console.log('first click');
-      }
 
-      if (matches === 10) {
-        console.log('YOU FINISHED');
+        if (matches === 10) {
+          console.log('YOU FINISHED');
       };
     });
   });
@@ -117,18 +117,19 @@ function player1(){
     console.log('player1 turn');
     clearBoard();
     var time = 0;
-  var timer = setInterval(function() {
-    if (matches < 10) {
-          time += 1;
-          $('#clock1').text(time);
-     } else if (matches >= 10) {
-      clearInterval(timer);
-      $('#result1').text("You finished in" + " " + time + " " + "seconds!");
-    }
+      var timer = setInterval(function() {
+        if (matches < 10) {
+              time += 1;
+              $('#clock1').text(time);
+        } else if (matches >= 10) {
+          clearInterval(timer);
+          $('#result1').text("You finished in" + " " + time + " " + "seconds!");
+        }
       }, 1000);
-    $('.pause').on("click", function(){
+  $('.pause').on("click", function(){
     clearInterval(timer);
   })
+
   });
 }
 
@@ -140,17 +141,18 @@ function player2(){
     clearBoard();
     var time = 0;
       var timer = setInterval(function() {
-    if (matches < 10) {
+        if (matches < 10) {
           time += 1;
           $('#clock2').text(time);
-     } else if (matches >= 10) {
-      clearInterval(timer);
-      $('#result2').text("You finished in" + " " + time + " " + "seconds!");
-    }
+        } else if (matches >= 10) {
+          clearInterval(timer);
+          $('#result2').text("You finished in" + " " + time + " " + "seconds!");
+        }
       }, 1000);
-    $('.pause').on("click", function(){
+  $('.pause').on("click", function(){
     clearInterval(timer);
   })
+
   });
 }
 
@@ -160,6 +162,10 @@ function pause(){
   $('.pause').on("click", function(){
     clearInterval(timer);
   })
+}
+
+function playButton(){
+
 }
 // function restart(){
 //   $('.reset').on("click", function(){
