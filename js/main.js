@@ -126,6 +126,9 @@ function player1(){
       $('#result1').text("You finished in" + " " + time + " " + "seconds!");
     }
       }, 1000);
+    $('.pause').on("click", function(){
+    clearInterval(timer);
+  })
   });
 }
 
@@ -145,10 +148,19 @@ function player2(){
       $('#result2').text("You finished in" + " " + time + " " + "seconds!");
     }
       }, 1000);
+    $('.pause').on("click", function(){
+    clearInterval(timer);
   })
+  });
 }
 
 player2();
+
+function pause(){
+  $('.pause').on("click", function(){
+    clearInterval(timer);
+  })
+}
 // function restart(){
 //   $('.reset').on("click", function(){
 //     console.log('restarted!');
