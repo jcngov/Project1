@@ -2,14 +2,6 @@
 
 // // Data Model:
 
-//nested
-// var tiles = [ // new Tile(0,"www.friendship.com/friends1.jpg")
-//             0, 1, 2, 3,
-//             4, 5, 6, 7,
-//             8, 9, 0, 1,
-//             2, 3, 4, 5,
-//             6, 7, 8, 9
-//             ];
 var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
@@ -101,7 +93,7 @@ var secondElem;
           setTimeout(function() {
             $(firstElem).text('');
             $(secondElem).text('');
-          }, 1000);
+          }, 700);
         }
         secondClick = false;
       } else {
@@ -115,12 +107,35 @@ var secondElem;
         console.log('YOU FINISHED');
 
       }
-
-        // matched(tiles[i].number);
     });
   });
 
 
+function playGame() {
+  $('start').on("click", function(){
+    console.log('started!');
+    startGame();
+  })
+}
+function restart(){
+  $('button').on("click", function(){
+    console.log('restarted!');
+    startGame();
+  });
+}
+
+// restart();
+
+function render() {
+  for (var i = 1; i <= tiles.length; i += 1) {
+    // if (tiles[i-1].match === true) {
+      $('#cell' + i).text(tiles[i-1].number);
+    // }
+  }
+}
+
+playGame();
+restart();
 // function matched(cellValue){
 //   if (pairs.length === 0) {
 //     pairs.push(cellValue);
@@ -144,24 +159,3 @@ var secondElem;
 //     console.log("YOU FINISHED");
 //   }
 // }
-function playGame() {
-
-}
-function restart(){
-  $('button').on("click", function(){
-    console.log('restarted!')
-    startGame();
-  });
-}
-
-restart();
-
-function render() {
-  for (var i = 1; i <= tiles.length; i += 1) {
-    // if (tiles[i-1].match === true) {
-      $('#cell' + i).text(tiles[i-1].number);
-    // }
-  }
-}
-
-
