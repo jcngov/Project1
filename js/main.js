@@ -105,10 +105,21 @@ var secondElem;
 
       if (matches === 10) {
         console.log('YOU FINISHED');
-
-      }
+      };
     });
   });
+
+
+var time = 0;
+var timer = setInterval(function() {
+  if (matches < 10) {
+        time += 1;
+        console.log(time);
+        $('#clock').html(time);
+   } else if (matches >= 10) {
+    clearInterval(timer);
+  }
+    }, 1000);
 
 
 function playGame() {
