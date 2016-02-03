@@ -61,10 +61,18 @@ function shuffle(array) {
 function startGame() {
   shuffle(tiles);
   console.log(tiles);
-  // win = false;
-  // player1 = "Player 1";
   var matches = 0;
+  var time = 0;
   $('.cell').text('');
+  var timer = setInterval(function() {
+  if (matches < 10) {
+        time += 1;
+        $('#clock').html(time);
+   } else if (matches >= 10) {
+    clearInterval(timer);
+    console.log("You finished in" + " " + time + " " + "seconds");
+  }
+    }, 1000);
 }
 
 
@@ -114,10 +122,10 @@ var time = 0;
 var timer = setInterval(function() {
   if (matches < 10) {
         time += 1;
-        console.log(time);
         $('#clock').html(time);
    } else if (matches >= 10) {
     clearInterval(timer);
+    $('#result').text("You finished in" + " " + time + " " + "seconds!");
   }
     }, 1000);
 
@@ -126,6 +134,7 @@ function playGame() {
   $('start').on("click", function(){
     console.log('started!');
     startGame();
+
   })
 }
 function restart(){
