@@ -14,7 +14,6 @@ var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
 }
-var pairs = [];
 var matches = 0;
 
 var tile1 = new Tile(0, 'ironman');
@@ -73,10 +72,15 @@ function startGame() {
   // win = false;
   // player1 = "Player 1";
   var matches = 0;
+  $('.cell').text('');
 }
 
 
 // when click on a tile, a value shows up
+var firstValue;
+var firstElem;
+var secondClick = false;
+var secondElem;
   $('.cell').each(function(i) {
     $(this).on('click', function(){
       // $(this).text(tiles[i].number);
@@ -86,15 +90,17 @@ function startGame() {
         if (firstValue === tiles[i].image) {
           console.log('matcheddddd');
           matches += 1;
+          console.log(matches);
           // it's a match do something with the cards
           // $(firstElem).css('visibility', 'hidden');
           // $(secondElem).css('visibility', 'hidden');
         } else {
           console.log('not matched');
+          console.log(matches);
           // set timer to remove text from cards
           setTimeout(function() {
-            $(secondElem).text('');
             $(firstElem).text('');
+            $(secondElem).text('');
           }, 1000);
         }
         secondClick = false;
@@ -114,35 +120,41 @@ function startGame() {
     });
   });
 
-var secondClick = false;
-var secondElem;
-var firstValue;
-var firstElem;
 
-function matched(cellValue){
-  if (pairs.length === 0) {
-    pairs.push(cellValue);
-  } else if (pairs.length === 1) {
-    pairs.push(cellValue);
-      if (pairs[0] === pairs[1]) {
-        matches += 1;
-        console.log(matches);
-        pairs = [];
-      }
-    else {
-        console.log('not match');
-      //   function flipBack(tile) {
-      //     tile.hide();
-      //   }
-      // setTimeout(flipBack, 1000);
-      pairs = [];
-      }
-    }
-  if (matches === 10) {
-    console.log("YOU FINISHED");
-  }
+// function matched(cellValue){
+//   if (pairs.length === 0) {
+//     pairs.push(cellValue);
+//   } else if (pairs.length === 1) {
+//     pairs.push(cellValue);
+//       if (pairs[0] === pairs[1]) {
+//         matches += 1;
+//         console.log(matches);
+//         pairs = [];
+//       }
+//     else {
+//         console.log('not match');
+//       //   function flipBack(tile) {
+//       //     tile.hide();
+//       //   }
+//       // setTimeout(flipBack, 1000);
+//       pairs = [];
+//       }
+//     }
+//   if (matches === 10) {
+//     console.log("YOU FINISHED");
+//   }
+// }
+function playGame() {
+
+}
+function restart(){
+  $('button').on("click", function(){
+    console.log('restarted!')
+    startGame();
+  });
 }
 
+restart();
 
 function render() {
   for (var i = 1; i <= tiles.length; i += 1) {
@@ -151,12 +163,5 @@ function render() {
     // }
   }
 }
-
-// function renderBoard(array) {
-//   console.log(array);
-//   for (var i = 0; i <= array.length; i++) {
-//     $('.board').append("<div class='cell' id='cell" + array[i].number + "'>" + "</div>");
-//   }
-// }
 
 
