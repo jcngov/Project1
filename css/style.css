@@ -137,6 +137,43 @@ h1 {
   padding-top: 28px;
   font-size: 43px;
 }
+
+/*.button1 {
+  position: relative;
+  right: 75px;
+  top: 110px;
+}*/
+
+/*.button2 {
+  position: relative;
+  right: 90px;
+  top: 60px;
+}
+*/
+
+.p1button {
+  border: 2px solid black;
+  height: 44px;
+  width: 300px;
+  display: inline-block;
+  position: relative;
+  top: 130px;
+  background-color: white;
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+}
+
+.p2button {
+  border: 2px solid black;
+  height: 44px;
+  width: 300px;
+  background-color: white;
+  position: relative;
+  top: 150px;
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+}
+
 .rightside {
   padding-right: 20px;
 }

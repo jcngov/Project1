@@ -115,7 +115,7 @@ var secondElem;
 var whoWon = [];
 
 function player1(){
-  $('.player1').on("click", function(){
+  $('.p1button').on("click", function(){
     console.log('player1 turn');
     clearBoard();
     var time = 0;
@@ -138,7 +138,7 @@ function player1(){
 player1();
 
 function player2(){
-  $('.player2').on("click", function(){
+  $('.p2button').on("click", function(){
     console.log('player2 turn');
     clearBoard();
     var time = 0;
