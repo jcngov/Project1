@@ -1,4 +1,4 @@
-// console.log("START");
+
 
 // // Data Model:
 var matches;
@@ -39,6 +39,8 @@ var tiles = [
             tile17, tile18, tile19, tile20
             ];
 
+var previousTile = null;
+
 // Shuffle Tiles:
 
 function shuffle(array) {
@@ -71,45 +73,60 @@ function clearBoard() {
 }
 
 
-// when click on a tile, a value shows up
 var firstValue;
-var firstElem;
+var firstCard;
 var secondClick = false;
-var secondElem;
-  $('.cell').each(function(i) {
-    $(this).on('click', function(){
-      // $(this).text(tiles[i].number);
-      $(this).html('<img src="' + tiles[i].image + '" />');
-        if (secondClick === true) {
-          secondElem = this;
-          if (firstValue === tiles[i].image) {
-            matches += 1;
-            console.log(matches);
-            // it's a match do something with the cards
-            // $(firstElem).css('visibility', 'hidden');
-            // $(secondElem).css('visibility', 'hidden');
-          } else {
-            console.log('not matched');
-            console.log(matches);
-            // set timer to remove text from cards
-            setTimeout(function() {
-              $(firstElem).text('');
-              $(secondElem).text('');
-            }, 700);
-          }
-          secondClick = false;
-        } else {
-          secondClick = true;
-          firstValue = tiles[i].image;
-          firstElem = this;
-          console.log('first click');
-        }
+var secondCard;
+// when click on a tile, a value shows up
+$('.cell').on('click', function(evt) {
+  var cell    = evt.currentTarget,
+      cellIdx = parseInt(cell.id.slice(-2)) - 1;
 
-        if (matches === 10) {
-          console.log('YOU FINISHED');
-      };
-    });
-  });
+  // no double-clicking!
+  if (previousTile === cellIdx && secondClick === true) {
+    return; // do nothing, return nothing... ignore the cick!
+  } else {
+    previousTile = null;
+  }
+
+  $(cell).html('<img src="' + tiles[cellIdx].image + '" />');
+
+  if (secondClick === false) {
+    firstValue = tiles[cellIdx].image;
+    // this is referring to the actual div being click on
+    firstCard = cell;
+    console.log('first click');
+    console.log(firstValue);
+    console.log(firstCard);
+    secondClick = true;
+    previousTile = cellIdx
+    // if you are on your second click, then that card you clicked on is equal to secondElem
+  } else if (secondClick === true) {
+
+    secondCard = cell;
+    console.log('second click');
+    console.log(secondCard);
+    // if your first clicked value equals second clicked value, then you've made a match.
+    if (firstValue === tiles[cellIdx].image) {
+      matches += 1;
+      console.log(matches);
+      console.log(firstValue);
+    } else {
+      console.log('not matched');
+      console.log(matches);
+      // set timer to remove text from cards
+      setTimeout(function() {
+        $(firstCard).text('');
+        $(secondCard).text('');
+      }, 700);
+    }
+    secondClick = false;
+  }
+
+  if (matches === 10) {
+    console.log('YOU FINISHED');
+  }
+});
 
 var whoWon = [];
 
@@ -147,13 +164,13 @@ function player2(){
           $('#clock2').text(time);
         } else if (matches >= 10) {
           clearInterval(timer);
+          $('#result2').text("Player 2 finished in" + " " + time + " " + "seconds!");
           whoWon.push(time);
             if(whoWon[0] < whoWon[1]) {
               $('.winner').text('Player 1 Wins!');
             } else if (whoWon[0] > whoWon[1]) {
               $('.winner').text('Player 2 Wins!');
-            }
-          $('#result2').text("Player 2 finished in" + " " + time + " " + "seconds!");
+            } else $('.winner').text("It's a tie!");
         }
       }, 1000);
   $('.pause').on("click", function(){
@@ -172,68 +189,57 @@ function getWinner(){
   }
 }
 
+var gamePaused;
+
 function pause(){
   $('.pause').on("click", function(){
     clearInterval(timer);
+    gamePaused = true;
   })
 }
 
-function restart(){
-  $('.restart').on("click", function(){
+function resumeGame() {
+
+}
+
+function playAgain(){
+  $('.playagain').on("click", function(){
     clearBoard();
-    $('#clock1').text("");
-    $('#clock2').text("");
+    $('#clock1').text("Time");
+    $('#clock2').text("Time");
     $('#result1').text("");
     $('#result2').text("");
-    $('.winner').text("");
+    $('.winner').text("Winner");
   });
 }
 
-restart();
-// function restart(){
-//   $('.reset').on("click", function(){
-//     console.log('restarted!');
-//     startGame();
-//   });
-// }
+playAgain();
 
-// function pause(){
-//   $('.pause').on("click", function(){
-//     console.log('paused');
-//     clearInterval(timer);
-//   });
-// }
+      // // if you are on your second click, then that card you clicked on is equal to secondElem
+      //   if (secondClick === true) {
+      //     secondCard = this;
+      //     console.log('second click');
+      //     console.log(secondCard);
+      // // if your first clicked value equals second clicked value, then you've made a match.
+      //     if (firstValue === tiles[i].image) {
+      //       matches += 1;
+      //       console.log(matches);
+      //       console.log(firstValue);
+      //     } else {
+      //       console.log('not matched');
+      //       console.log(matches);
+      //      // set timer to remove text from cards
+      //       setTimeout(function() {
+      //         $(firstCard).text('');
+      //         $(secondCard).text('');
+      //       }, 700);
+      //     }
+      //     secondClick = false;
+      //   } else {
+      //     firstValue = tiles[i].image;
+      //     firstCard = this;
+      //     console.log('first click');
+      //     console.log(firstValue);
+      //     secondClick = true;
+      //   }
 
-
-// function render() {
-//   for (var i = 1; i <= tiles.length; i += 1) {
-//     // if (tiles[i-1].match === true) {
-//       $('#cell' + i).text(tiles[i-1].number);
-//     // }
-//   }
-// }
-
-
-// function matched(cellValue){
-//   if (pairs.length === 0) {
-//     pairs.push(cellValue);
-//   } else if (pairs.length === 1) {
-//     pairs.push(cellValue);
-//       if (pairs[0] === pairs[1]) {
-//         matches += 1;
-//         console.log(matches);
-//         pairs = [];
-//       }
-//     else {
-//         console.log('not match');
-//       //   function flipBack(tile) {
-//       //     tile.hide();
-//       //   }
-//       // setTimeout(flipBack, 1000);
-//       pairs = [];
-//       }
-//     }
-//   if (matches === 10) {
-//     console.log("YOU FINISHED");
-//   }
-// }

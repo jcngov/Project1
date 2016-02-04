@@ -45,12 +45,12 @@ h1 {
   height: 600px;
   width: 800px;
   display: flex;
-  flex-wrap: no-wrap;
-  justify-content: center;
+  /*flex-wrap: no-wrap;*/
+  /*justify-content: center;*/
   margin: 0 auto;
 }
 
-.section1 {
+.leftside {
   margin: 0 auto;
   border: 2px solid white;
   max-width: 430px;
@@ -61,7 +61,7 @@ h1 {
   top: 25px;
 }
 
-.section2 {
+.section1 {
   border: 2px solid white;
   width: 300px;
   height: 90px;
@@ -96,7 +96,7 @@ h1 {
   padding-right: 2px;
 }
 
-.section3{
+.section2{
   border: 2px solid white;
   width: 300px;
   height: 90px;
@@ -138,25 +138,13 @@ h1 {
   /*border: 2px solid black;*/
   position: relative;
   top: 88px;
-  background-color: white;
+  background-color: black;
+  color: white;
   opacity: 0.8;
   font-family: 'Titillium Web', sans-serif;
   padding-top: 28px;
   font-size: 43px;
 }
-
-/*.button1 {
-  position: relative;
-  right: 75px;
-  top: 110px;
-}*/
-
-/*.button2 {
-  position: relative;
-  right: 90px;
-  top: 60px;
-}
-*/
 
 .p1button {
   border: 2px solid black;
@@ -164,7 +152,7 @@ h1 {
   width: 300px;
   display: inline-block;
   position: relative;
-  top: 130px;
+  top: 110px;
   background-color: white;
   font-family: 'Bangers', cursive;
   font-size: 40px;
@@ -181,7 +169,7 @@ h1 {
   width: 300px;
   background-color: white;
   position: relative;
-  top: 150px;
+  top: 130px;
   font-family: 'Bangers', cursive;
   font-size: 40px;
   opacity: 0.8;
@@ -191,6 +179,18 @@ h1 {
   padding-right: 20px;
 }
 
-footer {
-  text-align: center;
+.playagain {
+  height: 20px;
+  width: 90px;
+  border: 2px solid black;
+  border-radius: 20%;
+  position: relative;
+  top: 140px;
+  left: 100px;
+  padding: 10px;
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
 }
