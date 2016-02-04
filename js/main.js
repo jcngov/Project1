@@ -3,6 +3,7 @@
 // // Data Model:
 var matches;
 var winner;
+var time;
 
 var Tile = function(number, image) {
   this.number = number;
@@ -65,10 +66,8 @@ function clearBoard() {
   shuffle(tiles);
   console.log(tiles);
   matches = 0;
-  var time = 0;
+  time = 0;
   $('.cell').text("");
-  $('#clock').text("");
-  $('#result').text("");
 }
 
 
@@ -179,9 +178,18 @@ function pause(){
   })
 }
 
-function playButton(){
-
+function restart(){
+  $('.restart').on("click", function(){
+    clearBoard();
+    $('#clock1').text("");
+    $('#clock2').text("");
+    $('#result1').text("");
+    $('#result2').text("");
+    $('.winner').text("");
+  });
 }
+
+restart();
 // function restart(){
 //   $('.reset').on("click", function(){
 //     console.log('restarted!');

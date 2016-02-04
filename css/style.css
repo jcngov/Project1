@@ -23,6 +23,10 @@ h1 {
   opacity: 0.8;
 }
 
+.board {
+  width: 425px;
+}
+
 .cell {
   border: 2px solid black;
   height: 70px;
@@ -33,10 +37,13 @@ h1 {
   vertical-align: top;
 }
 
+.cell:hover{
+  background-color: black;
+}
 .wholething {
   border: 2px solid white;
   height: 600px;
-  max-width: 800px;
+  width: 800px;
   display: flex;
   flex-wrap: no-wrap;
   justify-content: center;
@@ -161,6 +168,11 @@ h1 {
   background-color: white;
   font-family: 'Bangers', cursive;
   font-size: 40px;
+  opacity: 0.8;
+}
+
+.p1button:hover, .p2button:hover {
+  background-color: red;
 }
 
 .p2button {
@@ -172,6 +184,7 @@ h1 {
   top: 150px;
   font-family: 'Bangers', cursive;
   font-size: 40px;
+  opacity: 0.8;
 }
 
 .rightside {
