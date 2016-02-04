@@ -28,8 +28,8 @@ var tile15 = new Tile(7, 'spiderman');
 var tile16 = new Tile(7, 'spiderman');
 var tile17 = new Tile(8, 'R2D2');
 var tile18 = new Tile(8, 'R2D2');
-var tile19 = new Tile(9, 'bobafet');
-var tile20 = new Tile(9, 'bobafet');
+var tile19 = new Tile(9, 'captainamerica');
+var tile20 = new Tile(9, 'captainamerica');
 
 var tiles = [
             tile1, tile2, tile3, tile4,
@@ -79,12 +79,17 @@ var secondClick = false;
 var secondCard;
 // when click on a tile, a value shows up
 $('.cell').on('click', function(evt) {
-  var cell    = evt.currentTarget,
-      cellIdx = parseInt(cell.id.slice(-2)) - 1;
-
+// Identifies the current target for the event, as the event traverses the DOM.
+// It always refers to the element the event handler has been attached to as
+// opposed to event.target which identifies the element on which the event occurred.
+      var cell = event.currentTarget;
+      var cellIdx = parseInt(cell.id.slice(-2)) - 1;
+      console.log(cell);
+      console.log(cellIdx);
   // no double-clicking!
   if (previousTile === cellIdx && secondClick === true) {
     return; // do nothing, return nothing... ignore the cick!
+
   } else {
     previousTile = null;
   }
@@ -93,7 +98,6 @@ $('.cell').on('click', function(evt) {
 
   if (secondClick === false) {
     firstValue = tiles[cellIdx].image;
-    // this is referring to the actual div being click on
     firstCard = cell;
     console.log('first click');
     console.log(firstValue);
