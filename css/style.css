@@ -64,22 +64,29 @@ h1 {
   background-color: black;
   opacity: 0.8;
   display: flex;
-  /*justify-content: center;*/
 }
 #clock1 {
   width: 100px;
-  height: 80px;
+  height: 56px;
   border: 5px solid;
   background-color: white;
   opacity: 0.9;
+  padding-top: 24px;
+  padding-right: 3px;
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
 }
 
 #result1 {
   width: 300px;
-  height: 80px;
+  height: 62px;
   border: 5px solid;
   background-color: white;
   opacity: 0.9;
+  font-family: 'Bangers', cursive;
+  padding-top: 17px;
+  font-size: 25px;
+  padding-right: 2px;
 }
 
 .section3{
@@ -96,28 +103,39 @@ h1 {
 
 #clock2 {
   width: 100px;
-  height: 80px;
+  height: 56px;
   border: 5px solid;
   background-color: white;
   opacity: 0.9;
+  padding-top: 24px;
+  padding-right:3px;
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
 }
 
 #result2 {
   width: 300px;
-  height: 80px;
+  height: 62px;
   border: 5px solid;
   background-color: white;
   opacity: 0.9;
+  font-family: 'Bangers', cursive;
+  padding-top: 17px;
+  font-size: 25px;
+  padding-right: 2px;
 }
 
 .winner {
   width: 300px;
-  height: 300px;
-  border: 2px solid black;
+  height: 94px;
+  /*border: 2px solid black;*/
   position: relative;
   top: 88px;
   background-color: white;
   opacity: 0.8;
+  font-family: 'Titillium Web', sans-serif;
+  padding-top: 28px;
+  font-size: 43px;
 }
 .rightside {
   padding-right: 20px;
