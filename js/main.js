@@ -158,9 +158,6 @@ function player1(){
         $('#result1').text("Player 1 finished in" + " " + time + " " + "seconds!");
       }
     }, 1000);
-    $('.pause').on("click", function(){
-      clearInterval(timer);
-    })
   });
 }
 
@@ -198,9 +195,6 @@ function player2(){
         } else $('.winner').text("It's a tie!");
       }
     }, 1000);
-    $('.pause').on("click", function(){
-      clearInterval(timer);
-    })
   });
 }
 
