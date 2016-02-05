@@ -147,22 +147,18 @@ function player1(){
         if (matches < 10) {
             time += 1;
             $('#clock1').text(time);
-          if (time === 5) {
-            $('.hurry').show(2500);
-            $('.hurry').hide(500);
-            console.log('HURRY');
-          } else if (time === 10) {
-            $('.doneyet').show(2500);
-            $('.doneyet').hide(500);
-            console.log('Are you almost done yet?');
-          } else if (time === 15) {
-            $('.anydaynow').show(2500);
-            $('.anydaynow').hide(500);
-            console.log('Any day now.');
-          } else if (time === 20) {
-            $('.practice').show(2500);
-            $('.practice').hide(500);
-            console.log('Keep practicing dude');
+          if (time === 10) {
+            $('.hurry').fadeIn(2500);
+            $('.hurry').fadeOut(1500);
+          } else if (time === 25) {
+            $('.doneyet').fadeIn(2500);
+            $('.doneyet').fadeOut(1500);
+          } else if (time === 40) {
+            $('.anydaynow').fadeIn(2500);
+            $('.anydaynow').fadeOut(1500);
+          } else if (time === 55) {
+            $('.practice').fadeIn(2500);
+            $('.practice').fadeOut(1500);
           }
         } else if (matches >= 10) {
           clearInterval(timer);

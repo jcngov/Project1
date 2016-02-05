@@ -196,53 +196,57 @@ h1 {
 }
 
 .hurry {
-  height: 17px;
-  width: 65px;
+  height: 28px;
+  width: 121px;
   border: 2px solid black;
-  background-color: red;
+  background-color: white;
   /*border-radius: 30%;*/
   position: relative;
   font-family: 'Bangers', cursive;
-  padding: 10px;
+  padding: 4px;
   bottom: 300px;
   left: 300px;
+  font-size: 30px;
 }
 
 .doneyet {
-  height: 32px;
-  width: 100px;
+  height: 50px;
+  width: 135px;
   border: 2px solid black;
-  background-color: red;
+  background-color: white;
   /*border-radius: 30%;*/
   position: relative;
   font-family: 'Bangers', cursive;
   padding: 4px;
   bottom: 300px;
   left: 400px;
+  font-size: 25px;
 }
 
 .anydaynow {
-  height: 17px;
+  height: 56px;
   width: 90px;
   border: 2px solid black;
-  background-color: red;
+  background-color: white;
   /*border-radius: 30%;*/
   position: relative;
   font-family: 'Bangers', cursive;
   padding: 4px;
   bottom: 400px;
   left: 400px;
+  font-size: 30px;
 }
 
 .practice {
-  height: 17px;
-  width: 100px;
+  height: 66px;
+  width: 122px;
   border: 2px solid black;
-  background-color: red;
+  background-color: white;
   /*border-radius: 30%;*/
   position: relative;
   font-family: 'Bangers', cursive;
   padding: 4px;
-  bottom: 470px;
+  bottom: 510px;
   left: 300px;
+  font-size: 30px;
 }
