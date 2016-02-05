@@ -15,7 +15,7 @@ var whoWon = [];
 var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
-}
+};
 
 var tile1 = new Tile(0, 'ironman');
 var tile2 = new Tile(0, 'ironman');
@@ -54,7 +54,7 @@ function shuffle(array) {
   var randomIndex;
 
   // While board needs to be shuffled
-  while (0 !== currentIndex) {
+  while (currentIndex !== 0) {
 
     // Pick an element
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -84,10 +84,10 @@ $('.cell').on('click', function(evt) {
 // Identifies the current target for the event, as the event traverses the DOM.
 // It always refers to the element the event handler has been attached to as
 // opposed to event.target which identifies the element on which the event occurred.
-      var cell = event.currentTarget;
-      var cellIdx = parseInt(cell.id.slice(-2)) - 1;
-      console.log(cell);
-      console.log(cellIdx);
+  var cell = event.currentTarget;
+  var cellIdx = parseInt(cell.id.slice(-2)) - 1;
+  console.log(cell);
+  console.log(cellIdx);
 
   // When you click on a cell, image appears
   $(cell).html('<img src="' + tiles[cellIdx].image + '" />');

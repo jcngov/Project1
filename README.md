@@ -11,6 +11,9 @@ Link to page:
 > [Speed Memory] (http://jcngov.github.io/Project1/)
 ***
 
+Link to Trello:
+
+> [Trello Board] (https://trello.com/b/XtP09Q0B/project-1)
 #How to Play
 
 1. Player goes first by clicking "Player 1 Button".
@@ -39,8 +42,6 @@ Link to page:
   2. CSS 
   3. Javascript 
   4. jQuery
-  
-* [Trello Board] (https://trello.com/b/XtP09Q0B/project-1)
 
 #Design
  * Original Wireframe:
