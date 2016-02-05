@@ -1,9 +1,13 @@
+// Global Variables
 
-
-// // Data Model:
 var matches;
 var winner;
 var time;
+var previousTile = null;
+var firstValue;
+var firstCard;
+var secondClick = false;
+var secondCard;
 
 var Tile = function(number, image) {
   this.number = number;
@@ -39,7 +43,6 @@ var tiles = [
             tile17, tile18, tile19, tile20
             ];
 
-var previousTile = null;
 
 // Shuffle Tiles:
 
@@ -66,17 +69,12 @@ function shuffle(array) {
 
 function clearBoard() {
   shuffle(tiles);
-  console.log(tiles);
   matches = 0;
   time = 0;
   $('.cell').text("");
 }
 
 
-var firstValue;
-var firstCard;
-var secondClick = false;
-var secondCard;
 // when click on a tile, a value shows up
 $('.cell').on('click', function(evt) {
 // Identifies the current target for the event, as the event traverses the DOM.
