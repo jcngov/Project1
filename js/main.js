@@ -133,6 +133,10 @@ $('.cell').on('click', function(evt) {
 });
 
 var whoWon = [];
+$('.hurry').hide();
+$('.doneyet').hide();
+$('.anydaynow').hide();
+$('.practice').hide();
 
 function player1(){
   $('.p1button').on("click", function(){
@@ -141,8 +145,25 @@ function player1(){
     var time = 0;
       var timer = setInterval(function() {
         if (matches < 10) {
-              time += 1;
-              $('#clock1').text(time);
+            time += 1;
+            $('#clock1').text(time);
+          if (time === 5) {
+            $('.hurry').show(2500);
+            $('.hurry').hide(500);
+            console.log('HURRY');
+          } else if (time === 10) {
+            $('.doneyet').show(2500);
+            $('.doneyet').hide(500);
+            console.log('Are you almost done yet?');
+          } else if (time === 15) {
+            $('.anydaynow').show(2500);
+            $('.anydaynow').hide(500);
+            console.log('Any day now.');
+          } else if (time === 20) {
+            $('.practice').show(2500);
+            $('.practice').hide(500);
+            console.log('Keep practicing dude');
+          }
         } else if (matches >= 10) {
           clearInterval(timer);
           whoWon.push(time);
