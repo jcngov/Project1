@@ -1,14 +1,17 @@
+console.log("main.js loaded!");
+
 // Global Variables
 
 var matches;
-var winner;
 var time;
-var previousTile = null;
-var firstValue;
+var firstTileClicked = null;
+var firstImage;
 var firstCard;
 var secondClick = false;
 var secondCard;
+var whoWon = [];
 
+// Constructor Function used for each tile
 var Tile = function(number, image) {
   this.number = number;
   this.image = "assets/" + image + ".jpg";
@@ -43,25 +46,26 @@ var tiles = [
             tile17, tile18, tile19, tile20
             ];
 
-
 // Shuffle Tiles:
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length;
+  var temporaryValue;
+  var randomIndex;
 
-  // While there remain elements to shuffle...
+  // While board needs to be shuffled
   while (0 !== currentIndex) {
 
-    // Pick a remaining element...
+    // Pick an element
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // And swap it with the current element.
+    // Swap with current element
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
+
   }
-  // renderBoard(array);
   return array;
 }
 
@@ -74,8 +78,8 @@ function clearBoard() {
   $('.cell').text("");
 }
 
+// Assign click event for each tile
 
-// when click on a tile, a value shows up
 $('.cell').on('click', function(evt) {
 // Identifies the current target for the event, as the event traverses the DOM.
 // It always refers to the element the event handler has been attached to as
@@ -84,39 +88,35 @@ $('.cell').on('click', function(evt) {
       var cellIdx = parseInt(cell.id.slice(-2)) - 1;
       console.log(cell);
       console.log(cellIdx);
-  // no double-clicking!
-  if (previousTile === cellIdx && secondClick === true) {
-    return; // do nothing, return nothing... ignore the cick!
 
-  } else {
-    previousTile = null;
-  }
-
+  // When you click on a cell, image appears
   $(cell).html('<img src="' + tiles[cellIdx].image + '" />');
 
+  // No double-clicking!
+  if (firstTileClicked === cellIdx && secondClick === true) {
+    return; // do nothing, return nothing... ignore the cick!
+  } else {
+    firstTileClicked = null;
+  }
+
+  // First click:
   if (secondClick === false) {
-    firstValue = tiles[cellIdx].image;
+    firstImage = tiles[cellIdx].image;
     firstCard = cell;
-    console.log('first click');
-    console.log(firstValue);
+    console.log(firstImage);
     console.log(firstCard);
     secondClick = true;
-    previousTile = cellIdx
-    // if you are on your second click, then that card you clicked on is equal to secondElem
-  } else if (secondClick === true) {
+    firstTileClicked = cellIdx;
 
+
+  // Second click: second card is just the target, firstImage has to match the image of that target
+  } else if (secondClick === true) {
     secondCard = cell;
-    console.log('second click');
-    console.log(secondCard);
-    // if your first clicked value equals second clicked value, then you've made a match.
-    if (firstValue === tiles[cellIdx].image) {
+    // if first image is equal to the image of the secondCard(target) then its a match!
+    if (firstImage === tiles[cellIdx].image) {
       matches += 1;
-      console.log(matches);
-      console.log(firstValue);
     } else {
-      console.log('not matched');
-      console.log(matches);
-      // set timer to remove text from cards
+      // set timer to remove image from card
       setTimeout(function() {
         $(firstCard).text('');
         $(secondCard).text('');
@@ -124,13 +124,8 @@ $('.cell').on('click', function(evt) {
     }
     secondClick = false;
   }
-
-  if (matches === 10) {
-    console.log('YOU FINISHED');
-  }
 });
 
-var whoWon = [];
 $('.hurry').hide();
 $('.doneyet').hide();
 $('.anydaynow').hide();
@@ -138,35 +133,34 @@ $('.practice').hide();
 
 function player1(){
   $('.p1button').on("click", function(){
-    console.log('player1 turn');
     clearBoard();
-    var time = 0;
-      var timer = setInterval(function() {
-        if (matches < 10) {
-            time += 1;
-            $('#clock1').text(time);
-          if (time === 10) {
-            $('.hurry').fadeIn(2500);
-            $('.hurry').fadeOut(1500);
-          } else if (time === 25) {
-            $('.doneyet').fadeIn(2500);
-            $('.doneyet').fadeOut(1500);
-          } else if (time === 40) {
-            $('.anydaynow').fadeIn(2500);
-            $('.anydaynow').fadeOut(1500);
-          } else if (time === 55) {
-            $('.practice').fadeIn(2500);
-            $('.practice').fadeOut(1500);
-          }
-        } else if (matches >= 10) {
-          clearInterval(timer);
-          whoWon.push(time);
-          $('#result1').text("Player 1 finished in" + " " + time + " " + "seconds!");
+    time = 0;
+    var timer = setInterval(function() {
+      if (matches < 10) {
+        time += 1;
+        $('#clock1').text(time);
+        if (time === 10) {
+          $('.hurry').fadeIn(2500);
+          $('.hurry').fadeOut(1500);
+        } else if (time === 25) {
+          $('.doneyet').fadeIn(2500);
+          $('.doneyet').fadeOut(1500);
+        } else if (time === 40) {
+          $('.anydaynow').fadeIn(2500);
+          $('.anydaynow').fadeOut(1500);
+        } else if (time === 55) {
+          $('.practice').fadeIn(2500);
+          $('.practice').fadeOut(1500);
         }
-      }, 1000);
-  $('.pause').on("click", function(){
-    clearInterval(timer);
-  })
+      } else {
+        clearInterval(timer);
+        whoWon.push(time);
+        $('#result1').text("Player 1 finished in" + " " + time + " " + "seconds!");
+      }
+    }, 1000);
+    $('.pause').on("click", function(){
+      clearInterval(timer);
+    })
   });
 }
 
@@ -174,52 +168,43 @@ player1();
 
 function player2(){
   $('.p2button').on("click", function(){
-    console.log('player2 turn');
     clearBoard();
-    var time = 0;
-      var timer = setInterval(function() {
-        if (matches < 10) {
-          time += 1;
-          $('#clock2').text(time);
-        } else if (matches >= 10) {
-          clearInterval(timer);
-          $('#result2').text("Player 2 finished in" + " " + time + " " + "seconds!");
-          whoWon.push(time);
-            if(whoWon[0] < whoWon[1]) {
-              $('.winner').text('Player 1 Wins!');
-            } else if (whoWon[0] > whoWon[1]) {
-              $('.winner').text('Player 2 Wins!');
-            } else $('.winner').text("It's a tie!");
+    time = 0;
+    var timer = setInterval(function() {
+      if (matches < 10) {
+        time += 1;
+        $('#clock2').text(time);
+        if (time === 10) {
+          $('.hurry').fadeIn(2500);
+          $('.hurry').fadeOut(1500);
+        } else if (time === 25) {
+          $('.doneyet').fadeIn(2500);
+          $('.doneyet').fadeOut(1500);
+        } else if (time === 40) {
+          $('.anydaynow').fadeIn(2500);
+          $('.anydaynow').fadeOut(1500);
+        } else if (time === 55) {
+          $('.practice').fadeIn(2500);
+          $('.practice').fadeOut(1500);
         }
-      }, 1000);
-  $('.pause').on("click", function(){
-    clearInterval(timer);
-  })
+      } else {
+        clearInterval(timer);
+        $('#result2').text("Player 2 finished in" + " " + time + " " + "seconds!");
+        whoWon.push(time);
+        if (whoWon[0] < whoWon[1]) {
+          $('.winner').text('Player 1 Wins!');
+        } else if (whoWon[0] > whoWon[1]) {
+          $('.winner').text('Player 2 Wins!');
+        } else $('.winner').text("It's a tie!");
+      }
+    }, 1000);
+    $('.pause').on("click", function(){
+      clearInterval(timer);
+    })
   });
 }
 
 player2();
-
-function getWinner(){
-  if($('#clock1').text(time) < $('#clock2').text(time)) {
-    console.log('winner is p1');
-  } else if ($('#clock1').text(time) > $('#clock2').text(time)) {
-    console.log('winner is p2');
-  }
-}
-
-var gamePaused;
-
-function pause(){
-  $('.pause').on("click", function(){
-    clearInterval(timer);
-    gamePaused = true;
-  })
-}
-
-function resumeGame() {
-
-}
 
 function playAgain(){
   $('.playagain').on("click", function(){
@@ -234,31 +219,5 @@ function playAgain(){
 
 playAgain();
 
-      // // if you are on your second click, then that card you clicked on is equal to secondElem
-      //   if (secondClick === true) {
-      //     secondCard = this;
-      //     console.log('second click');
-      //     console.log(secondCard);
-      // // if your first clicked value equals second clicked value, then you've made a match.
-      //     if (firstValue === tiles[i].image) {
-      //       matches += 1;
-      //       console.log(matches);
-      //       console.log(firstValue);
-      //     } else {
-      //       console.log('not matched');
-      //       console.log(matches);
-      //      // set timer to remove text from cards
-      //       setTimeout(function() {
-      //         $(firstCard).text('');
-      //         $(secondCard).text('');
-      //       }, 700);
-      //     }
-      //     secondClick = false;
-      //   } else {
-      //     firstValue = tiles[i].image;
-      //     firstCard = this;
-      //     console.log('first click');
-      //     console.log(firstValue);
-      //     secondClick = true;
-      //   }
+
 

@@ -2,11 +2,13 @@
 
 #Intro
 
-Speed Memory is a fun game for all ages, testing concentration skills and speed. In the original memory game, all tiles are faced down and two tiles are flipped face up over each turn.  The object of the game is to turn over pairs of matching cards. Speed Memory applies the same objective but adds a new twist by adding a little pressure to the player by testing how fast they could match each pair. 
+Speed Memory is a fun game for all ages, testing concentration skills and speed. In the original memory game, all tiles are faced down and two tiles are flipped face up over each turn.  The objective of the game is to turn over pairs of matching cards until every tile is matched. Speed Memory applies the same objective but adds a new twist by adding a little pressure to the player by testing how fast they could match each pair. 
 
 [![alt text](https://i.imgur.com/cwslwX4.png)] (http://jcngov.github.io/Project1/)
 
-> [SPEED MEMORY] (http://jcngov.github.io/Project1/)
+Link to page:
+
+> [Speed Memory] (http://jcngov.github.io/Project1/)
 ***
 
 #How to Play
@@ -30,11 +32,28 @@ Speed Memory is a fun game for all ages, testing concentration skills and speed.
 * A timer that monitors how long it takes for player to finish the board
 * Play again button after both players finish their boards
 
-#Behind the Scenes
+#Technologies
 
-* Constructed using HTML, CSS, Javascript, and jQuery
-* [TRELLO] (https://trello.com/b/XtP09Q0B/project-1)
-* Original Wireframe:
+* Constructed using:
+  1. HTML  
+  2. CSS 
+  3. Javascript 
+  4. jQuery
+  
+* [Trello Board] (https://trello.com/b/XtP09Q0B/project-1)
+
+#Design
+ * Original Wireframe:
 
  ![alt text] (https://i.imgur.com/GVsuuPd.png)
+ 
+ * Clear and simple memory board
+ * Theme based on random superhero and Star Wars characters
+ 
+#Future Plans
+
+* Fix glitches
+* Add more features (animations, sound, other effects)
+* Add different play modes
+
 
